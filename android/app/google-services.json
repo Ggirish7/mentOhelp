@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "492352961365",
+    "project_id": "ment-o-help-72f49",
+    "storage_bucket": "ment-o-help-72f49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492352961365:android:f66ebf93e759d5dcc54ddc",
+        "android_client_info": {
+          "package_name": "com.example.ment_o_help"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6ItMi-G6oFty3OqyX0lOrIZr6hNkApew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
