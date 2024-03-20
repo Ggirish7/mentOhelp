@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:ment_o_help/app/controllers/create_account_firebase_handler.dart';
 import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
 import 'package:ment_o_help/app/view/create_account_screen/widgets/create_account_input_widget.dart';
 import 'package:ment_o_help/app/view/create_account_screen/widgets/create_account_password_widget.dart';
-import 'package:ment_o_help/app/view/login_screen/login_password_controller.dart';
+import 'package:ment_o_help/app/controllers/login_password_controller.dart';
 import 'package:ment_o_help/core/app_colors.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
 import 'package:ment_o_help/core/app_icons.dart';
@@ -61,9 +62,11 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         height: 100.sp,
                       ),
-                      const CreateAccWidget(
+                      CreateAccWidget(
                         labelText: "Email Id",
                         keyboardType: TextInputType.emailAddress,
+                        onChanged: (value) =>
+                            _loginPasswordController.emailId.value = value,
                       ),
                       SizedBox(
                         height: 23.sp,
@@ -75,14 +78,16 @@ class LoginScreen extends StatelessWidget {
                               .obscureTextLoginPassword.value,
                           onPressed: () => _loginPasswordController
                               .changeObscureLoginPassword(),
+                          onChanged: (value) =>
+                              _loginPasswordController.password.value = value,
                         ),
                       ),
                       SizedBox(
                         height: 100.sp,
                       ),
-                      const FilledActionButton(
+                      FilledActionButton(
                         labelText: "LOG IN",
-                        onPressed: null,
+                        onPressed: () => FireManager.accLoginfirebase(),
                       ),
                     ],
                   ),

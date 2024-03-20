@@ -4,6 +4,7 @@ class RoutesNames {
   static const signup = "/signup";
   static const createAccount = "/create-account";
   static const login = "/login";
+  static const finalScreen = "/final";
   static const ageAndGender = "/age-gender";
   static const questionsScreen = "/questions-screen";
   static const onboardingquestionsScreen = "/onboarding-questions-screen";

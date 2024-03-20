@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ment_o_help/app/controllers/create_account_firebase_handler.dart';
 import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
 import 'package:ment_o_help/app/view/create_account_screen/widgets/input_fields.dart';
 import 'package:ment_o_help/core/app_colors.dart';
@@ -64,7 +65,8 @@ class CreateAccountScreen extends StatelessWidget {
                       ),
                       FilledActionButton(
                         labelText: "SIGN UP",
-                        onPressed: () => Get.toNamed(RoutesNames.ageAndGender),
+                        // onPressed: () => Get.toNamed(RoutesNames.ageAndGender),
+                        onPressed: () => FireManager.createAccountFirebase(),
                       ),
                       SizedBox(
                         height: 29.62.sp,
