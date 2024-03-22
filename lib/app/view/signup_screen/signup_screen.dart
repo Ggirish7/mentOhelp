@@ -38,7 +38,9 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 FilledActionButton(
                   labelText: "SIGN UP WITH EMAIL",
-                  onPressed: () => Get.toNamed(RoutesNames.createAccount),
+                  onPressed: () {
+                    onTapSignUpWithEmail();
+                  },
                 ),
                 SizedBox(
                   height: 26.sp,
@@ -69,9 +71,11 @@ class SignUpScreen extends StatelessWidget {
                 SizedBox(
                   height: 26.sp,
                 ),
-                const FilledActionButton(
+                FilledActionButton(
                   labelText: "CONTINUE WITH GOOGLE",
-                  onPressed: null,
+                  onPressed: () {
+                    onTapSignUpWithGoogle();
+                  },
                 ),
                 SizedBox(
                   height: 39.sp,
@@ -92,7 +96,9 @@ class SignUpScreen extends StatelessWidget {
                               decoration: TextDecoration.underline),
                         ),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () => Get.toNamed(RoutesNames.login),
+                          ..onTap = () {
+                            onTapLogin();
+                          },
                       ),
                     ],
                   ),
@@ -136,4 +142,16 @@ class SignUpScreen extends StatelessWidget {
       ),
     );
   }
+
+  // Navigates to the Create Account Screen
+  onTapSignUpWithEmail() {
+    Get.toNamed(RoutesNames.createAccount);
+  }
+
+  // Navigates to the Login Screen
+  onTapLogin() {
+    Get.toNamed(RoutesNames.login);
+  }
+
+  onTapSignUpWithGoogle() {}
 }

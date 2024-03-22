@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ment_o_help/app/utils/widgets/question_answer_screen/answer_widget.dart';
+import 'package:ment_o_help/app/view/question_screen/widgets/answer_widget.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
 
 class QuestionWidget2 extends StatelessWidget {

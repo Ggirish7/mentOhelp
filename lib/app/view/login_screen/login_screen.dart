@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ment_o_help/app/controllers/create_account_firebase_handler.dart';
+import 'package:ment_o_help/app/controllers/firebase_authentication_handler.dart';
 import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
 import 'package:ment_o_help/app/view/create_account_screen/widgets/create_account_input_widget.dart';
 import 'package:ment_o_help/app/view/create_account_screen/widgets/create_account_password_widget.dart';
-import 'package:ment_o_help/app/controllers/login_password_controller.dart';
+import 'package:ment_o_help/app/view/login_screen/controller/login_controller.dart';
 import 'package:ment_o_help/core/app_colors.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
 import 'package:ment_o_help/core/app_icons.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-  static final _loginPasswordController = Get.put(LoginPasswordController());
+  static final _loginPasswordController = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     return Container(

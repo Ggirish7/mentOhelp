@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
-import 'package:ment_o_help/app/utils/widgets/question_answer_screen/question_widget.dart';
+import 'package:ment_o_help/app/view/question_screen/widgets/question_widget.dart';
 import 'package:ment_o_help/core/app_colors.dart';
 
 class QuestionsScreen extends StatelessWidget {
@@ -26,18 +26,19 @@ class QuestionsScreen extends StatelessWidget {
               SizedBox(
                 height: 20.spMax,
               ),
+
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.75,
                 child: const FilledActionButton(
-                  onPressed: null,
                   labelText: "NEXT",
+                  onPressed: null,
                 ),
               ),
 
               // FOR IMPLEMENTING NEXT AND PREVIOUS BUTTONS USING TERNARY OR IF-ELSE STATEMETS
 
               // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //   mainAxisAlignment: MainAxisAlignment.center,
               //   children: [
               //     SizedBox(
               //       width: MediaQuery.of(context).size.width * 0.4,
@@ -45,6 +46,9 @@ class QuestionsScreen extends StatelessWidget {
               //         onPressed: null,
               //         labelText: "PREVIOUS",
               //       ),
+              //     ),
+              //     SizedBox(
+              //       width: 10.spMax,
               //     ),
               //     SizedBox(
               //       width: MediaQuery.of(context).size.width * 0.4,

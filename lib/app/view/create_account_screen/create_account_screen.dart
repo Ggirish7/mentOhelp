@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ment_o_help/app/controllers/create_account_firebase_handler.dart';
+import 'package:ment_o_help/app/controllers/firebase_authentication_handler.dart';
 import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
 import 'package:ment_o_help/app/view/create_account_screen/widgets/input_fields.dart';
 import 'package:ment_o_help/core/app_colors.dart';
@@ -66,7 +66,9 @@ class CreateAccountScreen extends StatelessWidget {
                       FilledActionButton(
                         labelText: "SIGN UP",
                         // onPressed: () => Get.toNamed(RoutesNames.ageAndGender),
-                        onPressed: () => FireManager.createAccountFirebase(),
+                        onPressed: () {
+                          onTapSignUp();
+                        },
                       ),
                       SizedBox(
                         height: 29.62.sp,
@@ -80,15 +82,16 @@ class CreateAccountScreen extends StatelessWidget {
                               style: GoogleFonts.inter(color: Colors.white),
                             ),
                             TextSpan(
-                              text: "Log In",
-                              style: GoogleFonts.inter(
-                                color: Colors.white,
-                                textStyle: const TextStyle(
-                                    decoration: TextDecoration.underline),
-                              ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () => Get.toNamed(RoutesNames.login),
-                            ),
+                                text: "Log In",
+                                style: GoogleFonts.inter(
+                                  color: Colors.white,
+                                  textStyle: const TextStyle(
+                                      decoration: TextDecoration.underline),
+                                ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    onTapLogin();
+                                  }),
                           ],
                         ),
                       ),
@@ -104,5 +107,15 @@ class CreateAccountScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // On Hitting the SignUp Button
+  onTapSignUp() {
+    FireManager.createAccountFirebase();
+  }
+
+  // Navigates to the Login Screen
+  onTapLogin() {
+    Get.toNamed(RoutesNames.login);
   }
 }

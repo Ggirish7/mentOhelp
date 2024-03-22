@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ment_o_help/app/utils/widgets/hollow_button.dart';
-import 'package:ment_o_help/app/utils/widgets/intro_carousal.dart';
+import 'package:ment_o_help/app/view/onboarding_screen/widgets/intro_carousal.dart';
 import 'package:ment_o_help/core/app_colors.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
 import 'package:ment_o_help/core/app_images.dart';
@@ -54,7 +54,9 @@ class OnBoardingScreen extends StatelessWidget {
                 ),
                 HollowButton(
                   labelText: "GET STARTED",
-                  onPressed: () => Get.toNamed(RoutesNames.signup),
+                  onPressed: () {
+                    onTapGetStarted();
+                  },
                 ),
                 SizedBox(
                   height: 20.23.sp,
@@ -74,7 +76,9 @@ class OnBoardingScreen extends StatelessWidget {
                               decoration: TextDecoration.underline),
                         ),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () => Get.toNamed(RoutesNames.login),
+                          ..onTap = () {
+                            onTapLogin();
+                          },
                       ),
                     ],
                   ),
@@ -88,5 +92,15 @@ class OnBoardingScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // Navigates to the SignUp Screen
+  onTapGetStarted() {
+    Get.toNamed(RoutesNames.signup);
+  }
+
+  // Navigates to the Login Screen
+  onTapLogin() {
+    Get.toNamed(RoutesNames.login);
   }
 }

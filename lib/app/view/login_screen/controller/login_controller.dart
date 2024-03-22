@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class LoginPasswordController extends GetxController {
+class LoginController extends GetxController {
   RxBool obscureTextLoginPassword = true.obs;
   RxString emailId = "".obs;
   RxString password = "".obs;

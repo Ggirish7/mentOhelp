@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
-import 'package:ment_o_help/app/utils/widgets/user_selected_screen_widget.dart';
+import 'package:ment_o_help/app/view/what_brings_you_here/widgets/option_path.dart';
 import 'package:ment_o_help/core/app_colors.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
 import 'package:ment_o_help/core/app_routes.dart';
@@ -29,20 +29,23 @@ class WhatBringsYouScreen extends StatelessWidget {
               SizedBox(
                 height: 45.spMax,
               ),
-              const UserSelectedScreenWidget(
+              const OptionPath(
                 labelText: "I want to take a Therapy",
+                index: 1,
               ),
               SizedBox(
                 height: 45.spMax,
               ),
-              const UserSelectedScreenWidget(
+              const OptionPath(
                 labelText: "I want to build Mental\nStrength,Take a test?",
+                index: 2,
               ),
               SizedBox(
                 height: 45.spMax,
               ),
-              const UserSelectedScreenWidget(
+              const OptionPath(
                 labelText: "Not Sure?, Talk to\nMindmate",
+                index: 3,
               ),
               const Spacer(),
               SizedBox(

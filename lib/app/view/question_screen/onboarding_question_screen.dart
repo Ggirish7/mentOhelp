@@ -6,6 +6,9 @@ import 'package:ment_o_help/core/app_colors.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
 import 'package:ment_o_help/core/app_routes.dart';
 
+// TODO: Add animation
+// TODO: Change stateful widget to stateless
+
 class OnboardingQuestionScreen extends StatefulWidget {
   const OnboardingQuestionScreen({super.key});
 
@@ -18,7 +21,8 @@ class _OnboardingQuestionScreenState extends State<OnboardingQuestionScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 2), () {
-      Get.toNamed(RoutesNames.questionsScreen);
+      // Get.toNamed(RoutesNames.questionsScreen);
+      Get.offAllNamed(RoutesNames.questionsScreen);
     });
     super.initState();
   }

@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ment_o_help/app/view/create_account_screen/controller/create_account_email_phonenumber_controller.dart';
-import 'package:ment_o_help/app/view/create_account_screen/controller/create_account_password_controller.dart';
+import 'package:ment_o_help/app/view/create_account_screen/controller/create_account_controller.dart';
 import 'package:ment_o_help/app/view/create_account_screen/widgets/create_account_input_widget.dart';
 import 'package:ment_o_help/app/view/create_account_screen/widgets/create_account_password_widget.dart';
 
 class InputForm extends StatelessWidget {
   const InputForm({super.key});
-  static final _passwordController = Get.put(CreateAccPasswordController());
-  static final _emailPhoneController = Get.put(CreateAccEmailPhnController());
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(CreateAccountController());
     return Form(
-      key: _passwordController.createAccPasswordKey,
+      key: CreateAccountController.createAccPasswordKey,
       child: Column(
         children: [
           const CreateAccWidget(
@@ -25,8 +23,8 @@ class InputForm extends StatelessWidget {
           CreateAccWidget(
             labelText: "Email",
             keyboardType: TextInputType.emailAddress,
-            onChanged: (value) => _emailPhoneController.emailId.value = value,
-            validator: (value) => _emailPhoneController.validateEmailId(value!),
+            onChanged: (value) => controller.emailId.value = value,
+            validator: (value) => controller.validateEmailId(value!),
           ),
           SizedBox(
             height: 23.sp,
@@ -34,10 +32,8 @@ class InputForm extends StatelessWidget {
           CreateAccWidget(
             labelText: "Phone",
             keyboardType: TextInputType.phone,
-            onChanged: (value) =>
-                _emailPhoneController.phoneNumber.value = value,
-            validator: (value) =>
-                _emailPhoneController.validatePhoneNumber(value!),
+            onChanged: (value) => controller.phoneNumber.value = value,
+            validator: (value) => controller.validatePhoneNumber(value!),
           ),
           SizedBox(
             height: 23.sp,
@@ -45,13 +41,10 @@ class InputForm extends StatelessWidget {
           Obx(
             () => CreateAccPasswordWidget(
               labelText: "Create Password",
-              obscureText: _passwordController.obscureTextCreatePassword.value,
-              onPressed: () =>
-                  _passwordController.changeObscureCreatePassword(),
-              onChanged: (value) =>
-                  _passwordController.createPassword.value = value,
-              validator: (value) =>
-                  _passwordController.validateCreatePassword(value!),
+              obscureText: controller.obscureTextCreatePassword.value,
+              onPressed: () => controller.changeObscureCreatePassword(),
+              onChanged: (value) => controller.createPassword.value = value,
+              validator: (value) => controller.validateCreatePassword(value!),
             ),
           ),
           SizedBox(
@@ -60,13 +53,11 @@ class InputForm extends StatelessWidget {
           Obx(
             () => CreateAccPasswordWidget(
               labelText: "Confirm Password",
-              obscureText: _passwordController.obscureTextConfirmPassword.value,
-              onPressed: () =>
-                  _passwordController.changeObscureConfirmPassword(),
-              onChanged: (value) =>
-                  _passwordController.confirmPassword.value = value,
-              validator: (value) => _passwordController.validateConfirmPassword(
-                  value!, _passwordController.createPassword.value),
+              obscureText: controller.obscureTextConfirmPassword.value,
+              onPressed: () => controller.changeObscureConfirmPassword(),
+              onChanged: (value) => controller.confirmPassword.value = value,
+              validator: (value) => controller.validateConfirmPassword(
+                  value!, controller.createPassword.value),
             ),
           ),
         ],

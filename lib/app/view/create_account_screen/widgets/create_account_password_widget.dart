@@ -44,7 +44,6 @@ class CreateAccPasswordWidget extends StatelessWidget {
         ),
         suffixIcon: IconButton(
           onPressed: onPressed,
-          // ignore: dead_code
           color: const Color(0xFF828693),
           icon: obscureText
               ? const Icon(

@@ -1,9 +1,34 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CreateAccPasswordController extends GetxController {
+class CreateAccountController extends GetxController {
+  // Initializing emailId and Phone number for create account screen
+  RxString emailId = "".obs;
+  RxString phoneNumber = "".obs;
+
+  // Validation for EmailId
+  String? validateEmailId(String emailId) {
+    if (emailId.isEmpty) {
+      return "Enter Email Id";
+    } else if (!emailId.isEmail) {
+      return "Enter a valid Email Id";
+    }
+    return null;
+  }
+
+  // Validation Phone number
+  String? validatePhoneNumber(String phoneNumber) {
+    if (phoneNumber.isEmpty) {
+      return "Enter Phone Number";
+    } else if (phoneNumber.length != 10) {
+      return "Enter a valid Phone Number";
+    }
+    return null;
+  }
+
   // Key for Create account Form
-  final GlobalKey<FormState> createAccPasswordKey = GlobalKey<FormState>();
+  static final GlobalKey<FormState> createAccPasswordKey =
+      GlobalKey<FormState>();
 
   // Create Password and Confirm Password Values
   RxString createPassword = "".obs;

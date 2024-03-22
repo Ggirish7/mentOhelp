@@ -1,20 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:ment_o_help/app/controllers/login_password_controller.dart';
-import 'package:ment_o_help/app/view/create_account_screen/controller/create_account_email_phonenumber_controller.dart';
-import 'package:ment_o_help/app/view/create_account_screen/controller/create_account_password_controller.dart';
+import 'package:ment_o_help/app/view/login_screen/controller/login_controller.dart';
+import 'package:ment_o_help/app/view/create_account_screen/controller/create_account_controller.dart';
 import 'package:ment_o_help/core/app_routes.dart';
 
 class FireManager {
-  static final _passwordController = Get.put(CreateAccPasswordController());
-  static final _emailPhoneController = Get.put(CreateAccEmailPhnController());
-  static final _loginController = Get.put(LoginPasswordController());
+  static final _createAccountController = Get.put(CreateAccountController());
+  static final _loginController = Get.put(LoginController());
 
   static void createAccountFirebase() {
     FirebaseAuth.instance
         .createUserWithEmailAndPassword(
-            email: _emailPhoneController.emailId.value,
-            password: _passwordController.confirmPassword.value)
+            email: _createAccountController.emailId.value,
+            password: _createAccountController.confirmPassword.value)
         .then((value) => Get.offNamed(RoutesNames.finalScreen));
   }
 

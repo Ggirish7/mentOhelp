@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ment_o_help/app/controllers/create_account_firebase_handler.dart';
+import 'package:ment_o_help/app/controllers/firebase_authentication_handler.dart';
 import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
 import 'package:ment_o_help/core/app_colors.dart';
 
-class FinalScreen extends StatelessWidget {
-  const FinalScreen({super.key});
+class LoginTestScreen extends StatelessWidget {
+  const LoginTestScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

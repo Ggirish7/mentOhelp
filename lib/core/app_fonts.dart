@@ -67,6 +67,12 @@ class AppFonts {
     color: Colors.white,
   );
 
+  static TextStyle ageAndGenderDate = GoogleFonts.inter(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w300,
+    color: Colors.white,
+  );
+
   static TextStyle ageAndGenderText = GoogleFonts.inter(
     fontSize: 17.sp,
     fontWeight: FontWeight.w400,

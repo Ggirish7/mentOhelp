@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ment_o_help/app/utils/widgets/age_and_gender_card_widget.dart';
+import 'package:ment_o_help/app/view/age_gender_screen/widgets/age_and_gender_card_widget.dart';
 import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
 import 'package:ment_o_help/core/app_colors.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
@@ -15,6 +15,7 @@ class AgeAndGenderScreen extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(gradient: Col.appBackGround),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: Column(
