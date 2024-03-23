@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
+import 'package:ment_o_help/app/view/what_brings_you_here/controller/what_brings_you_controller.dart';
 import 'package:ment_o_help/app/view/what_brings_you_here/widgets/option_path.dart';
 import 'package:ment_o_help/core/app_colors.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
@@ -12,6 +13,7 @@ class WhatBringsYouScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var whatBringsYouController = Get.put(WhatBringsYouController());
     return Container(
       decoration: BoxDecoration(gradient: Col.appBackGround),
       child: Scaffold(
@@ -52,8 +54,11 @@ class WhatBringsYouScreen extends StatelessWidget {
                 width: 312.spMax,
                 child: FilledActionButton(
                   labelText: "NEXT STEP",
-                  onPressed: () =>
-                      Get.toNamed(RoutesNames.onboardingquestionsScreen),
+                  onPressed: () {
+                    if (whatBringsYouController.getPathIndex() == 2) {
+                      Get.toNamed(RoutesNames.onboardingquestionsScreen);
+                    }
+                  },
                 ),
               ),
               SizedBox(

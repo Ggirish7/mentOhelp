@@ -34,7 +34,7 @@ class OptionPath extends StatelessWidget {
                   width: 43.spMax,
                   decoration: BoxDecoration(
                     color: whatBringsYouController.getPathIndex() == index
-                        ? Colors.green[700]
+                        ? Colors.green[600]
                         : const Color(
                             0xFFD9D9D9,
                           ),

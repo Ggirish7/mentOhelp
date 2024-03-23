@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ment_o_help/app/view/question_screen/controller/question_screen_controller.dart';
 import 'package:ment_o_help/app/view/question_screen/widgets/answer_widget.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
 
@@ -10,10 +12,12 @@ class QuestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var questionScreenController = Get.put(QuestionScreenController());
     return CarouselSlider(
+      carouselController: questionScreenController.buttonCarouselController,
       options: CarouselOptions(
         height: MediaQuery.of(context).size.height * 0.78,
-        viewportFraction: 0.8,
+        viewportFraction: 0.83,
         initialPage: 0,
         enableInfiniteScroll: false,
         reverse: false,
@@ -24,6 +28,9 @@ class QuestionWidget extends StatelessWidget {
         enlargeCenterPage: true,
         enlargeFactor: 0.3,
         scrollDirection: Axis.horizontal,
+        // scrollPhysics: const NeverScrollableScrollPhysics(),
+        onPageChanged: ((index, reason) =>
+            questionScreenController.updateQuestionIndex(index)),
       ),
       items: [0, 1, 2, 3, 4, 5, 6, 7, 8].map(
         (i) {
@@ -38,15 +45,15 @@ class QuestionWidget extends StatelessWidget {
                     color: Colors.grey.shade300,
                     borderRadius: BorderRadius.circular(25.spMax)),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       "Over the last 2 weeks, how often have you been bothered by any of the following problems?",
                       style: AppFonts.pageTitles2,
                     ),
-                    SizedBox(
-                      height: 20.spMax,
-                    ),
+                    // SizedBox(
+                    //   height: 20.spMax,
+                    // ),
                     Text(
                       Questions().questionText[i],
                       style: GoogleFonts.catamaran(
@@ -57,7 +64,7 @@ class QuestionWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Spacer(),
+                    // const Spacer(),
                     const AnswerWidget(),
                   ],
                 ),

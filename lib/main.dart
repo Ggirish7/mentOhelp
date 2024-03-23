@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           title: "ment-o-help",
           themeMode: ThemeMode.system,
           // initialRoute: RoutesNames.onBoarding,
-          initialRoute: RoutesNames.whatBringsYouScreen,
+          initialRoute: RoutesNames.questionsScreen,
           getPages: Routes.routes,
         );
       },
