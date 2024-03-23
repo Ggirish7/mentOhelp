@@ -87,7 +87,17 @@ class LoginScreen extends StatelessWidget {
                       ),
                       FilledActionButton(
                         labelText: "LOG IN",
-                        onPressed: () => FireManager.accLoginfirebase(),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            },
+                          );
+                          FireManager.accLoginfirebase();
+                        },
                       ),
                     ],
                   ),
