@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: "ment-o-help",
           themeMode: ThemeMode.system,
-          initialRoute: RoutesNames.onBoarding,
-          // initialRoute: RoutesNames.questionsScreen,
+          // initialRoute: RoutesNames.onBoarding,
+          initialRoute: RoutesNames.coreIssuesScreen,
           getPages: Routes.routes,
         );
       },

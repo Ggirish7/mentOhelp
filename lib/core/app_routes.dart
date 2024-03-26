@@ -4,10 +4,12 @@ class RoutesNames {
   static const signup = "/signup";
   static const createAccount = "/create-account";
   static const login = "/login";
-  static const finalScreen = "/final";
   static const ageAndGender = "/age-gender";
+  static const whatBringsYouScreen = "/what-brings-you-screen";
+  static const coreIssuesScreen = "/core-issues-screen";
   static const questionsScreen = "/questions-screen";
   static const onboardingquestionsScreen = "/onboarding-questions-screen";
-  static const whatBringsYouScreen = "/what-brings-you-screen";
+
   static const testWidget = "/test-widget";
+  static const finalScreen = "/final";
 }

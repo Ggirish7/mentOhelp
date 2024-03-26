@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-// import 'package:ment_o_help/app/view/question_screen/widgets/question_widget2.dart';
 import 'package:ment_o_help/app/view/age_gender_screen/age_and_gender_screen.dart';
+import 'package:ment_o_help/app/view/core_issues_screen/core_issues_screen.dart';
 import 'package:ment_o_help/app/view/create_account_screen/create_account_screen.dart';
 import 'package:ment_o_help/app/view/login_test_screen.dart';
 import 'package:ment_o_help/app/view/login_screen/login_screen.dart';
@@ -42,20 +42,20 @@ class Routes {
       page: () => const AgeAndGenderScreen(),
     ),
     GetPage(
-      name: RoutesNames.questionsScreen,
-      page: () => const QuestionsScreen(),
+      name: RoutesNames.whatBringsYouScreen,
+      page: () => const WhatBringsYouScreen(),
+    ),
+    GetPage(
+      name: RoutesNames.coreIssuesScreen,
+      page: () => const CoreIssuesScreen(),
     ),
     GetPage(
       name: RoutesNames.onboardingquestionsScreen,
       page: () => const OnboardingQuestionScreen(),
     ),
     GetPage(
-      name: RoutesNames.whatBringsYouScreen,
-      page: () => const WhatBringsYouScreen(),
+      name: RoutesNames.questionsScreen,
+      page: () => const QuestionsScreen(),
     ),
-    // GetPage(
-    //   name: RoutesNames.testWidget,
-    //   page: () => const QuestionWidget2(),
-    // )
   ];
 }

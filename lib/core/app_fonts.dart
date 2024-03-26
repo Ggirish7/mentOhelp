@@ -79,10 +79,36 @@ class AppFonts {
     color: Colors.white,
   );
 
+  static TextStyle coreIssuesMainText = GoogleFonts.inter(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+
+  static TextStyle coreIssuesOptionsText = GoogleFonts.inter(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w300,
+    color: Colors.black,
+  );
+
   static TextStyle userSelectedSCreenText = GoogleFonts.inter(
     fontSize: 18.sp,
     fontWeight: FontWeight.w700,
     color: Colors.white,
+  );
+
+  static TextStyle coreIssuesScreenText = GoogleFonts.inter(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+
+  static TextStyle coreIssuesScreenText2 = GoogleFonts.inter(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+    textStyle: const TextStyle(
+        decoration: TextDecoration.underline, decorationColor: Colors.white),
   );
 
   // static const String nunito = 'nunito';
