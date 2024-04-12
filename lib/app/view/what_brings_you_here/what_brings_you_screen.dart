@@ -55,8 +55,11 @@ class WhatBringsYouScreen extends StatelessWidget {
                 child: FilledActionButton(
                   labelText: "NEXT STEP",
                   onPressed: () {
-                    if (whatBringsYouController.getPathIndex() == 2) {
+                    if (whatBringsYouController.getPathIndex() == 1 ||
+                        whatBringsYouController.getPathIndex() == 2) {
                       Get.toNamed(RoutesNames.onboardingquestionsScreen);
+                    } else if (whatBringsYouController.getPathIndex() == 3) {
+                      Get.toNamed(RoutesNames.chatBotScreen);
                     }
                   },
                 ),

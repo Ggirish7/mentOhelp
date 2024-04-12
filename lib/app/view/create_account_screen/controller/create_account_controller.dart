@@ -3,8 +3,31 @@ import 'package:get/get.dart';
 
 class CreateAccountController extends GetxController {
   // Initializing emailId and Phone number for create account screen
+  RxString name = "".obs;
   RxString emailId = "".obs;
   RxString phoneNumber = "".obs;
+
+  // Initializiong TextEditing Controllers
+  TextEditingController nameTextController = TextEditingController();
+  TextEditingController emailTextController = TextEditingController();
+  TextEditingController createPasswordTextController = TextEditingController();
+  TextEditingController confirmPasswordTextController = TextEditingController();
+
+  // Clearing Controllers
+  void clearControllers() {
+    nameTextController.clear();
+    emailTextController.clear();
+    createPasswordTextController.clear();
+    confirmPasswordTextController.clear();
+  }
+
+  // Validation for Name
+  String? validateName(String name) {
+    if (name.isEmpty) {
+      return "Can't be empty";
+    }
+    return null;
+  }
 
   // Validation for EmailId
   String? validateEmailId(String emailId) {

@@ -12,13 +12,17 @@ class LoginTestScreen extends StatelessWidget {
       decoration: BoxDecoration(gradient: Col.appBackGround),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(40.0),
-            child: FilledActionButton(
-                labelText: "LOG OUT",
-                onPressed: () => FireManager.accSignoutFirebase()),
-          ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: FilledActionButton(
+                  labelText: "LOG OUT",
+                  onPressed: () => FireManager.accSignoutFirebase()),
+            ),
+          ],
         ),
       ),
     );

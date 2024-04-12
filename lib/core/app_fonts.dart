@@ -111,6 +111,18 @@ class AppFonts {
         decoration: TextDecoration.underline, decorationColor: Colors.white),
   );
 
+  static TextStyle chatBotScreenMainText = GoogleFonts.inter(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static TextStyle chatBotScreenSubText = GoogleFonts.inter(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
   // static const String nunito = 'nunito';
 
   // static TextStyle nunitoRegular({

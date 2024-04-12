@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ment_o_help/app/controllers/firebase_authentication_handler.dart';
 import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
+import 'package:ment_o_help/app/view/create_account_screen/controller/create_account_controller.dart';
 import 'package:ment_o_help/app/view/create_account_screen/widgets/input_fields.dart';
 import 'package:ment_o_help/core/app_colors.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
@@ -111,7 +112,15 @@ class CreateAccountScreen extends StatelessWidget {
 
   // On Hitting the SignUp Button
   onTapSignUp() {
-    FireManager.createAccountFirebase();
+    if (CreateAccountController.createAccPasswordKey.currentState!.validate()) {
+      FireManager.createAccountFirebase();
+    }
+  }
+
+  // On tap singin with google
+  onTapSingUpWithGoogle() {
+    FireManager.signupWithGoogle();
+    Get.offNamed(RoutesNames.finalScreen);
   }
 
   // Navigates to the Login Screen

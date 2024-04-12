@@ -14,8 +14,11 @@ class InputForm extends StatelessWidget {
       key: CreateAccountController.createAccPasswordKey,
       child: Column(
         children: [
-          const CreateAccWidget(
+          CreateAccWidget(
             labelText: "Name",
+            onChanged: (value) => controller.name.value = value,
+            validator: (value) => controller.validateName(value!),
+            controller: controller.nameTextController,
           ),
           SizedBox(
             height: 23.sp,
@@ -25,19 +28,20 @@ class InputForm extends StatelessWidget {
             keyboardType: TextInputType.emailAddress,
             onChanged: (value) => controller.emailId.value = value,
             validator: (value) => controller.validateEmailId(value!),
+            controller: controller.emailTextController,
           ),
           SizedBox(
             height: 23.sp,
           ),
-          CreateAccWidget(
-            labelText: "Phone",
-            keyboardType: TextInputType.phone,
-            onChanged: (value) => controller.phoneNumber.value = value,
-            validator: (value) => controller.validatePhoneNumber(value!),
-          ),
-          SizedBox(
-            height: 23.sp,
-          ),
+          // CreateAccWidget(
+          //   labelText: "Phone",
+          //   keyboardType: TextInputType.phone,
+          //   onChanged: (value) => controller.phoneNumber.value = value,
+          //   validator: (value) => controller.validatePhoneNumber(value!),
+          // ),
+          // SizedBox(
+          //   height: 23.sp,
+          // ),
           Obx(
             () => CreateAccPasswordWidget(
               labelText: "Create Password",
@@ -45,6 +49,7 @@ class InputForm extends StatelessWidget {
               onPressed: () => controller.changeObscureCreatePassword(),
               onChanged: (value) => controller.createPassword.value = value,
               validator: (value) => controller.validateCreatePassword(value!),
+              controller: controller.createPasswordTextController,
             ),
           ),
           SizedBox(
@@ -58,6 +63,7 @@ class InputForm extends StatelessWidget {
               onChanged: (value) => controller.confirmPassword.value = value,
               validator: (value) => controller.validateConfirmPassword(
                   value!, controller.createPassword.value),
+              controller: controller.confirmPasswordTextController,
             ),
           ),
         ],

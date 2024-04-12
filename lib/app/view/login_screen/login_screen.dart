@@ -62,24 +62,39 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         height: 100.sp,
                       ),
-                      CreateAccWidget(
-                        labelText: "Email Id",
-                        keyboardType: TextInputType.emailAddress,
-                        onChanged: (value) =>
-                            _loginPasswordController.emailId.value = value,
-                      ),
-                      SizedBox(
-                        height: 23.sp,
-                      ),
-                      Obx(
-                        () => CreateAccPasswordWidget(
-                          labelText: "Password",
-                          obscureText: _loginPasswordController
-                              .obscureTextLoginPassword.value,
-                          onPressed: () => _loginPasswordController
-                              .changeObscureLoginPassword(),
-                          onChanged: (value) =>
-                              _loginPasswordController.password.value = value,
+                      Form(
+                        key: LoginController.loginKey,
+                        child: Column(
+                          children: [
+                            CreateAccWidget(
+                              labelText: "Email Id",
+                              keyboardType: TextInputType.emailAddress,
+                              onChanged: (value) => _loginPasswordController
+                                  .emailId.value = value,
+                              validator: (value) => _loginPasswordController
+                                  .validateEmail(value!),
+                              controller:
+                                  _loginPasswordController.emailTextController,
+                            ),
+                            SizedBox(
+                              height: 23.sp,
+                            ),
+                            Obx(
+                              () => CreateAccPasswordWidget(
+                                labelText: "Password",
+                                obscureText: _loginPasswordController
+                                    .obscureTextLoginPassword.value,
+                                onPressed: () => _loginPasswordController
+                                    .changeObscureLoginPassword(),
+                                onChanged: (value) => _loginPasswordController
+                                    .password.value = value,
+                                validator: (value) => _loginPasswordController
+                                    .validatePassword(value!),
+                                controller: _loginPasswordController
+                                    .passwordTextController,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       SizedBox(
@@ -88,15 +103,19 @@ class LoginScreen extends StatelessWidget {
                       FilledActionButton(
                         labelText: "LOG IN",
                         onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return const Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            },
-                          );
-                          FireManager.accLoginfirebase();
+                          if (LoginController.loginKey.currentState!
+                              .validate()) {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              },
+                            );
+                            FireManager.accLoginfirebase();
+                          }
+                          // Get.offAllNamed(RoutesNames.dashBoardScreen);
                         },
                       ),
                     ],

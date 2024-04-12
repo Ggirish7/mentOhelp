@@ -2,8 +2,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:ment_o_help/core/app_colors.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
+import 'package:ment_o_help/core/app_routes.dart';
 
 class ChatBotCardWidget extends StatelessWidget {
   const ChatBotCardWidget({
@@ -73,5 +75,5 @@ class ChatBotCardWidget extends StatelessWidget {
 
 // Navigate to chatbot Screen
 onTapLetsGo() {
-  null;
+  Get.toNamed(RoutesNames.chatBotScreen);
 }

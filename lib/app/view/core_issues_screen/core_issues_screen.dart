@@ -7,6 +7,7 @@ import 'package:ment_o_help/app/view/core_issues_screen/widgets/chatbot_card_wid
 import 'package:ment_o_help/app/view/core_issues_screen/widgets/issues_widget.dart';
 import 'package:ment_o_help/core/app_colors.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
+import 'package:ment_o_help/core/app_routes.dart';
 
 class CoreIssuesScreen extends StatelessWidget {
   const CoreIssuesScreen({super.key});
@@ -59,8 +60,10 @@ class CoreIssuesScreen extends StatelessWidget {
                   child: FilledActionButton(
                     labelText: "NEXT STEP",
                     onPressed: () {
-                      onTapNextStep(context,
-                          coreIssuesScreenController.nextScreenCondition());
+                      onTapNextStep(
+                        context,
+                        coreIssuesScreenController.nextScreenCondition(),
+                      );
                     },
                   ),
                 ),
@@ -79,7 +82,7 @@ class CoreIssuesScreen extends StatelessWidget {
 // Navigates to chatbot screen
 onTapNextStep(BuildContext context, bool value) {
   value
-      ? null
+      ? Get.toNamed(RoutesNames.whatBringsYouScreen)
       : ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             duration: const Duration(seconds: 1),

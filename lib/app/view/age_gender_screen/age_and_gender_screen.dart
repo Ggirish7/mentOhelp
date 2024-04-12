@@ -36,7 +36,9 @@ class AgeAndGenderScreen extends StatelessWidget {
                 width: 312.spMax,
                 child: FilledActionButton(
                   labelText: "NEXT STEP",
-                  onPressed: () => Get.toNamed(RoutesNames.whatBringsYouScreen),
+                  onPressed: () {
+                    onTapNextSTep();
+                  },
                 ),
               ),
               SizedBox(
@@ -48,4 +50,8 @@ class AgeAndGenderScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+onTapNextSTep() {
+  Get.toNamed(RoutesNames.coreIssuesScreen);
 }

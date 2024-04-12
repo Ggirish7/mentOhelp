@@ -28,7 +28,7 @@ class QuestionWidget extends StatelessWidget {
         enlargeCenterPage: true,
         enlargeFactor: 0.3,
         scrollDirection: Axis.horizontal,
-        // scrollPhysics: const NeverScrollableScrollPhysics(),
+        scrollPhysics: const NeverScrollableScrollPhysics(),
         onPageChanged: ((index, reason) =>
             questionScreenController.updateQuestionIndex(index)),
       ),

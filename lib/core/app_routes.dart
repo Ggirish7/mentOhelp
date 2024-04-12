@@ -9,7 +9,9 @@ class RoutesNames {
   static const coreIssuesScreen = "/core-issues-screen";
   static const questionsScreen = "/questions-screen";
   static const onboardingquestionsScreen = "/onboarding-questions-screen";
+  static const chatBotScreen = "/chat-bot-screen";
+  static const dashBoardScreen = "/dashboard";
+  static const analyzingScreen = "/analyzing=screen";
 
-  static const testWidget = "/test-widget";
   static const finalScreen = "/final";
 }

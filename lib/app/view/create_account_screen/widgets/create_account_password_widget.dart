@@ -10,12 +10,14 @@ class CreateAccPasswordWidget extends StatelessWidget {
     required this.onPressed,
     this.validator,
     this.onChanged,
+    this.controller,
   });
   final String labelText;
   final bool obscureText;
   final void Function()? onPressed;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class CreateAccPasswordWidget extends StatelessWidget {
       obscureText: obscureText,
       validator: validator,
       onChanged: onChanged,
+      controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         enabledBorder: UnderlineInputBorder(

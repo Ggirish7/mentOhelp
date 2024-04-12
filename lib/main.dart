@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:ment_o_help/app/utils/globals.dart';
 import 'package:ment_o_help/app/utils/routes.dart';
 import 'package:ment_o_help/core/app_routes.dart';
 import 'package:ment_o_help/firebase_options.dart';
@@ -28,9 +29,10 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: "ment-o-help",
           themeMode: ThemeMode.system,
-          // initialRoute: RoutesNames.onBoarding,
-          initialRoute: RoutesNames.coreIssuesScreen,
+          initialRoute: RoutesNames.onBoarding,
+          // initialRoute: RoutesNames.questionsScreen,
           getPages: Routes.routes,
+          scaffoldMessengerKey: snackbarKey,
         );
       },
     );

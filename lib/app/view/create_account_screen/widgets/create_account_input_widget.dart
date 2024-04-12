@@ -9,11 +9,13 @@ class CreateAccWidget extends StatelessWidget {
     this.keyboardType,
     this.validator,
     this.onChanged,
+    this.controller,
   });
   final String labelText;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +43,7 @@ class CreateAccWidget extends StatelessWidget {
           color: const Color(0xFF828693),
         ),
       ),
+      controller: controller,
     );
   }
 }

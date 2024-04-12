@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
 import 'package:ment_o_help/app/view/age_gender_screen/age_and_gender_screen.dart';
+import 'package:ment_o_help/app/view/analyzing_screen/analyzing_screen.dart';
+import 'package:ment_o_help/app/view/chat_bot_screen/chat_bot_screen.dart';
 import 'package:ment_o_help/app/view/core_issues_screen/core_issues_screen.dart';
 import 'package:ment_o_help/app/view/create_account_screen/create_account_screen.dart';
+import 'package:ment_o_help/app/view/dashboard_screen/dashboard_screen.dart';
 import 'package:ment_o_help/app/view/login_test_screen.dart';
 import 'package:ment_o_help/app/view/login_screen/login_screen.dart';
 import 'package:ment_o_help/app/view/question_screen/onboarding_question_screen.dart';
@@ -56,6 +59,18 @@ class Routes {
     GetPage(
       name: RoutesNames.questionsScreen,
       page: () => const QuestionsScreen(),
+    ),
+    GetPage(
+      name: RoutesNames.analyzingScreen,
+      page: () => const AnalyzingScreen(),
+    ),
+    GetPage(
+      name: RoutesNames.chatBotScreen,
+      page: () => const ChatBotScreen(),
+    ),
+    GetPage(
+      name: RoutesNames.dashBoardScreen,
+      page: () => const DashBoardScreen(),
     ),
   ];
 }

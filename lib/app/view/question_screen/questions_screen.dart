@@ -5,6 +5,7 @@ import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
 import 'package:ment_o_help/app/view/question_screen/controller/question_screen_controller.dart';
 import 'package:ment_o_help/app/view/question_screen/widgets/question_widget.dart';
 import 'package:ment_o_help/core/app_colors.dart';
+import 'package:ment_o_help/core/app_routes.dart';
 
 class QuestionsScreen extends StatelessWidget {
   const QuestionsScreen({super.key});
@@ -50,9 +51,12 @@ class QuestionsScreen extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: FilledActionButton(
+                        // onPressed: () {
+                        //   questionScreenController.buttonCarouselController
+                        //       .previousPage();
+                        // },
                         onPressed: () {
-                          questionScreenController.buttonCarouselController
-                              .previousPage();
+                          Get.offAllNamed(RoutesNames.analyzingScreen);
                         },
                         labelText: "PREVIOUS",
                       ),
@@ -63,8 +67,11 @@ class QuestionsScreen extends StatelessWidget {
                     questionScreenController.getQuestionIndex() == 8
                         ? SizedBox(
                             width: MediaQuery.of(context).size.width * 0.4,
-                            child: const FilledActionButton(
-                              onPressed: null,
+                            child: FilledActionButton(
+                              onPressed: () {
+                                print(questionScreenController.getScore());
+                                onTapSubmit(context);
+                              },
                               labelText: "SUBMIT",
                             ),
                           )
@@ -87,5 +94,21 @@ class QuestionsScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void onTapSubmit(BuildContext context) {
+    questionScreenController.answerCheckCondition()
+        ? questionScreenController.calculateScore()
+        : ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 1),
+              action: SnackBarAction(
+                  label: "Dismiss",
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                  }),
+              content: const Text("Please answer all questions"),
+            ),
+          );
   }
 }
