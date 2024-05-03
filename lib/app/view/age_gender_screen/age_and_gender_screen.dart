@@ -21,19 +21,19 @@ class AgeAndGenderScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: 78.sp,
+                height: 78.h,
               ),
               Center(
                 child: Text("LETS PERSONALIZE THIS FOR YOU",
                     style: AppFonts.pageTitles),
               ),
               SizedBox(
-                height: 40.spMax,
+                height: 40.h,
               ),
               const AgeAndGenderCardWidget(),
               const Spacer(),
               SizedBox(
-                width: 312.spMax,
+                width: 312.w,
                 child: FilledActionButton(
                   labelText: "NEXT STEP",
                   onPressed: () {
@@ -42,7 +42,7 @@ class AgeAndGenderScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 22.sp,
+                height: 22.h,
               ),
             ],
           ),

@@ -9,6 +9,7 @@ environment:
 dependencies:
   auto_size_text: ^3.0.0
   carousel_slider: ^4.2.1
+  chat_bubbles: ^1.6.0
   cloud_firestore: ^4.16.0
   cupertino_icons: ^1.0.2
   firebase_auth: ^4.17.9
@@ -16,6 +17,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.0
+  flutter_launcher_icons: ^0.13.1
   flutter_screenutil: ^5.9.0
   get: ^4.6.6
   google_fonts: ^6.1.0
@@ -24,6 +26,10 @@ dependencies:
   intl: ^0.19.0
   lottie: ^3.1.0
   smooth_page_indicator: ^1.1.0
+
+flutter_launcher_icons:
+  image_path_android: "assets/images/main_logo.png"
+  android: true
 
 dev_dependencies:
   flutter_lints: ^3.0.0
@@ -34,8 +40,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
     - assets/images/
+    - assets/images/analyzing_images/
     - assets/images/carousal_images/
     - assets/icons/
     - assets/animations/

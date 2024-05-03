@@ -27,6 +27,14 @@ class Col {
       //     ? const [Color(0xFF110122), Color(0xFF43034A)]
       //     : const [Color(0xFFEA4080), Color(0xFFEE805F)],
       );
+  static LinearGradient selected = const LinearGradient(
+      begin: Alignment.bottomLeft,
+      end: Alignment.topRight,
+      colors: [Colors.green, Color.fromARGB(255, 29, 100, 33)]
+      // colors: Get.isDarkMode
+      //     ? const [Color(0xFF110122), Color(0xFF43034A)]
+      //     : const [Color(0xFFEA4080), Color(0xFFEE805F)],
+      );
 
   static LinearGradient buttonBackGroundReversed = const LinearGradient(
       begin: Alignment.topCenter,

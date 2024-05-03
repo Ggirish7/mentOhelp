@@ -16,6 +16,10 @@ class LoginTestScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            // const Padding(
+            //   padding: EdgeInsets.all(4),
+            //   child: AutoSizeText(),
+            // ),
             Padding(
               padding: const EdgeInsets.all(40.0),
               child: FilledActionButton(

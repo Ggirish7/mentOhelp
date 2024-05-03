@@ -15,7 +15,6 @@ class DashBoardScreen extends StatelessWidget {
         gradient: Col.appBackGround,
       ),
       child: Scaffold(
-        // resizeToAvoidBottomInset: true,
         backgroundColor: Colors.transparent,
         body: Obx(
           () => IndexedStack(
@@ -23,6 +22,7 @@ class DashBoardScreen extends StatelessWidget {
             children: dashBoardController.screens,
           ),
         ),
+        // body: const AppointmentScreen(),
         bottomNavigationBar:
             CustomNavigationBar(dashBoardController: dashBoardController),
       ),

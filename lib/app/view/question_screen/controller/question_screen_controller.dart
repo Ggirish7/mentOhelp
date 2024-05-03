@@ -1,5 +1,8 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:get/get.dart';
+import 'package:ment_o_help/app/view/help_screen/concerning_screen.dart';
+import 'package:ment_o_help/app/view/help_screen/critical_screen.dart';
+import 'package:ment_o_help/app/view/help_screen/self_help_sccreen.dart';
 import 'package:ment_o_help/core/app_routes.dart';
 
 class QuestionScreenController extends GetxController {
@@ -15,9 +18,8 @@ class QuestionScreenController extends GetxController {
     for (int i = 0; i < 9; i++) {
       sum += getAnswerAtIndex(i) * getWeightAge(i);
     }
-    _score.value = (sum / 9).floor();
-
-    Get.offAllNamed(RoutesNames.analyzingScreen);
+    _score.value = sum; //(sum / 9).floor();
+    Get.toNamed(RoutesNames.analyzingScreen);
   }
 
   // answer check condition
@@ -34,17 +36,27 @@ class QuestionScreenController extends GetxController {
   //--> 0 - 10 = No Help --> 10 - 30 = Self Help --> 30 - 70 = Online Counselling --> 70 - 93 = Offline
 
   void analyszeSituation() {
-    // No Help
-    if (_score.value <= 10) {
-    }
     // Self Help
-    else if ((_score.value > 10) && (_score.value <= 30)) {
+    if (_score.value <= 30) {
+      // Get.offAllNamed(RoutesNames.selfHelpScreen);
+      Get.offAll(() => const SelfHelpScreen(),
+          transition: Transition.downToUp,
+          duration: const Duration(seconds: 1));
     }
     // Online Counselling
     else if ((_score.value > 30) && (_score.value <= 70)) {
+      // Get.offAllNamed(RoutesNames.concerningScreen);
+      Get.offAll(() => const ConcerningScreen(),
+          transition: Transition.downToUp,
+          duration: const Duration(seconds: 1));
     }
     // Offline
-    else if (_score.value > 70) {}
+    else if (_score.value > 70) {
+      // Get.offAllNamed(RoutesNames.criticalScreen);
+      Get.offAll(() => const CriticalScreen(),
+          transition: Transition.downToUp,
+          duration: const Duration(seconds: 1));
+    }
   }
 
   int getQuestionIndex() {

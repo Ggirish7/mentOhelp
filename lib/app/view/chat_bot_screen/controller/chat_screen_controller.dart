@@ -2,57 +2,64 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:ment_o_help/app/controllers/firebase_authentication_handler.dart';
+import 'package:ment_o_help/app/utils/globals.dart';
 
 class ChatScreenController extends GetxController {
-  final TextEditingController controller = TextEditingController();
+  final TextEditingController textController = TextEditingController();
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final message = "".obs;
+  // final apiUrl = Uri.parse('http://10.0.2.2:5000/get?msg=$message');
+  // final apiUrl = Uri.parse('http://192.168.1.38:5000/get?msg=$message');
+  // final apiUrl = "http://192.168.1.38:5000/";
+  final apiUrl = "http://192.168.206.39:5000/";
 
-  // Future<void> sendMessage(String message) async {
-  //   if (message.isNotEmpty) {
-  //     await firestore
-  //         .collection('users')
-  //         .document(widget.userId)
-  //         .collection('chats')
-  //         .add({
-  //       'text': message,
-  //       'createdAt': DateTime.now(),
-  //     });
-  //     controller.clear();
-  //   }
-  // }
+  @override
+  void onInit() {
+    firstResponse();
+    super.onInit();
+  }
 
-  // Future<String> getResponse(String message) async {
-  //   final apiUrl = Uri.parse('YOUR_API_URL');
-  //   final response = await http.post(apiUrl, body: {'message': message});
-  //   if (response.statusCode == 200) {
-  //     final responseData = json.decode(response.body);
-  //     return responseData['response'];
-  //   } else {
-  //     throw Exception('Failed to fetch response');
-  //   }
-  // }
-// import 'package:dio/dio.dart';
-
-  // final dio = Dio();
-
-  // void getHttp() async {
-  //   final response = await dio.get('https://dart.dev');
-  //   print(response);
-  // }
+  Future<void> sendMessage(String message, bool isUser) async {
+    if (message.isNotEmpty) {
+      await firestore
+          .collection('users')
+          .doc(FireManager.loggedInUser.uid)
+          .collection('chats')
+          .add({
+        'text': message,
+        'createdAt': DateTime.now(),
+        'isUser': isUser,
+      });
+      textController.clear();
+    }
+  }
 
   Future<void> getResponse(String message) async {
-    // final queryParameters = {
-    //   'msg': message,
-    // };
-    print(message);
-    final response =
-        await http.get(Uri.parse('http://10.0.2.2:5000/get?msg=' + message));
-    print("completed");
-    print(response.body);
-    // if (response.statusCode == 200) {
-    //   print(response.data);
-    // } else {
-    //   throw Exception('Failed to fetch response');
-    // }
+    try {
+      var uri = Uri.parse("${apiUrl}get?msg=$message");
+      final response = await http.get(uri);
+      if (response.statusCode == 200) {
+        sendMessage(response.body, false);
+      } else {
+        getSnackBar("Failed to fetch response");
+      }
+    } catch (e) {
+      getSnackBar("Server Issue");
+    }
+  }
+
+  Future<void> firstResponse() async {
+    try {
+      var uri = Uri.parse(apiUrl);
+      final response = await http.get(uri);
+      if (response.statusCode == 200) {
+        sendMessage(response.body, false);
+      } else {
+        getSnackBar("Failed to fetch response");
+      }
+    } catch (e) {
+      getSnackBar("Server Issue");
+    }
   }
 }

@@ -29,16 +29,16 @@ class CreateAccountScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: 78.sp,
+                  height: 78.h,
                 ),
                 Row(
                   children: [
                     SizedBox(
-                      width: 18.sp,
+                      width: 18.w,
                     ),
                     SizedBox(
-                      width: 24.sp,
-                      height: 24.sp,
+                      width: 24.w,
+                      height: 24.h,
                       child: GestureDetector(
                         onTap: () => Get.back(),
                         child: Image.asset(
@@ -47,32 +47,31 @@ class CreateAccountScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 51.75.sp,
+                      width: 51.75.w,
                     ),
                     Text("CREATE YOUR ACCOUNT", style: AppFonts.pageTitles),
                     const Spacer(),
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 30.0.sp, right: 43.sp),
+                  padding: EdgeInsets.only(left: 30.0.w, right: 43.w),
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 44.sp,
+                        height: 44.h,
                       ),
                       const InputForm(),
                       SizedBox(
-                        height: 50.sp,
+                        height: 50.h,
                       ),
                       FilledActionButton(
                         labelText: "SIGN UP",
-                        // onPressed: () => Get.toNamed(RoutesNames.ageAndGender),
                         onPressed: () {
-                          onTapSignUp();
+                          onTapSignUp(context);
                         },
                       ),
                       SizedBox(
-                        height: 29.62.sp,
+                        height: 29.62.h,
                       ),
                       RichText(
                         textAlign: TextAlign.center,
@@ -97,7 +96,7 @@ class CreateAccountScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 22.sp,
+                        height: 22.h,
                       )
                     ],
                   ),
@@ -111,16 +110,18 @@ class CreateAccountScreen extends StatelessWidget {
   }
 
   // On Hitting the SignUp Button
-  onTapSignUp() {
+  onTapSignUp(BuildContext context) {
     if (CreateAccountController.createAccPasswordKey.currentState!.validate()) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      );
       FireManager.createAccountFirebase();
     }
-  }
-
-  // On tap singin with google
-  onTapSingUpWithGoogle() {
-    FireManager.signupWithGoogle();
-    Get.offNamed(RoutesNames.finalScreen);
   }
 
   // Navigates to the Login Screen

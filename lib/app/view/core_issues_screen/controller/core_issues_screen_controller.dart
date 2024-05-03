@@ -9,6 +9,7 @@ class CoreIssuesScreenController extends GetxController {
   RxBool traumaMood = false.obs;
   RxBool sexualGender = false.obs;
   RxBool worklifeStress = false.obs;
+  RxBool other = false.obs;
 
   void updateAnxietyMood() {
     anxietyMood.value = !anxietyMood.value;
@@ -42,6 +43,10 @@ class CoreIssuesScreenController extends GetxController {
     worklifeStress.value = !worklifeStress.value;
   }
 
+  void updateOther() {
+    other.value = !other.value;
+  }
+
   bool nextScreenCondition() {
     return (anxietyMood.value == true ||
         greif.value == true ||
@@ -50,6 +55,7 @@ class CoreIssuesScreenController extends GetxController {
         relationships.value == true ||
         traumaMood.value == true ||
         sexualGender.value == true ||
-        worklifeStress.value == true);
+        worklifeStress.value == true ||
+        other.value == true);
   }
 }

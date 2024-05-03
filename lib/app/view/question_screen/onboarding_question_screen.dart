@@ -6,8 +6,6 @@ import 'package:ment_o_help/app/view/question_screen/questions_screen.dart';
 import 'package:ment_o_help/core/app_colors.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
 
-// TODO: Change stateful widget to stateless
-
 class OnboardingQuestionScreen extends StatefulWidget {
   const OnboardingQuestionScreen({super.key});
 
@@ -20,7 +18,6 @@ class _OnboardingQuestionScreenState extends State<OnboardingQuestionScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 2), () {
-      // Get.toNamed(RoutesNames.questionsScreen);
       Get.offAll(() => const QuestionsScreen(),
           transition: Transition.downToUp,
           duration: const Duration(seconds: 1));

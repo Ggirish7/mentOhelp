@@ -15,12 +15,12 @@ class ChatBotCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
       width: double.maxFinite,
-      height: 184.spMax,
+      height: 184.h,
       decoration: BoxDecoration(
         gradient: Col.buttonBackGround,
-        borderRadius: BorderRadius.circular(10.sp),
+        borderRadius: BorderRadius.circular(10.r),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -50,8 +50,8 @@ class ChatBotCardWidget extends StatelessWidget {
               ),
               Image.asset(
                 "assets/images/carousal_images/carousal_image_3.png",
-                height: 100.spMax,
-                width: 100.spMax,
+                height: 100.h,
+                width: 100.w,
                 fit: BoxFit.cover,
               ),
             ],

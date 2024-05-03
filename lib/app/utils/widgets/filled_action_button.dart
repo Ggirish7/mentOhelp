@@ -14,25 +14,27 @@ class FilledActionButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: Col.buttonBackGround,
-        borderRadius: BorderRadius.circular(67.sp),
+        borderRadius: BorderRadius.circular(67.r),
       ),
       child: OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          fixedSize: const Size(double.maxFinite, 50),
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          fixedSize: Size(double.maxFinite, 50.h),
           side: const BorderSide(
             width: 1.34,
             color: Colors.transparent,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(67.0),
+            borderRadius: BorderRadius.circular(67.r),
           ),
         ),
         child: Text(
           labelText,
           style: GoogleFonts.inter(
-              fontSize: 16, color: Colors.white, fontWeight: FontWeight.w700),
+              fontSize: 16.sp,
+              color: Colors.white,
+              fontWeight: FontWeight.w700),
         ),
       ),
     );

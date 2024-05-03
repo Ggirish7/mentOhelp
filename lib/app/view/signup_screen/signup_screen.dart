@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ment_o_help/app/controllers/firebase_authentication_handler.dart';
 import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
 import 'package:ment_o_help/core/app_colors.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
@@ -22,19 +23,19 @@ class SignUpScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 59.sp),
+            padding: EdgeInsets.symmetric(horizontal: 59.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 97.sp,
+                  height: 97.h,
                 ),
                 Text(
                   "CREATE YOUR ACCOUNT",
                   style: AppFonts.pageTitles,
                 ),
                 SizedBox(
-                  height: 52.sp,
+                  height: 52.h,
                 ),
                 FilledActionButton(
                   labelText: "SIGN UP WITH EMAIL",
@@ -43,16 +44,16 @@ class SignUpScreen extends StatelessWidget {
                   },
                 ),
                 SizedBox(
-                  height: 26.sp,
+                  height: 26.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Divider(
-                        thickness: 1.sp,
+                        thickness: 1,
                         color: Colors.white,
-                        endIndent: 3.sp,
+                        endIndent: 3,
                       ),
                     ),
                     Text(
@@ -69,16 +70,24 @@ class SignUpScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 26.sp,
+                  height: 26.h,
                 ),
                 FilledActionButton(
                   labelText: "CONTINUE WITH GOOGLE",
                   onPressed: () {
-                    onTapSignUpWithGoogle();
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                    );
+                    FireManager.signupWithGoogle();
                   },
                 ),
                 SizedBox(
-                  height: 39.sp,
+                  height: 39.h,
                 ),
                 RichText(
                   textAlign: TextAlign.center,
@@ -133,7 +142,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 50.sp,
+                  height: 50.h,
                 )
               ],
             ),
@@ -153,5 +162,9 @@ class SignUpScreen extends StatelessWidget {
     Get.toNamed(RoutesNames.login);
   }
 
-  onTapSignUpWithGoogle() {}
+  // On tap singin with google
+  onTapSignUpWithGoogle() {
+    FireManager.signupWithGoogle();
+    Get.offNamed(RoutesNames.finalScreen);
+  }
 }

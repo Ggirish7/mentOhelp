@@ -1,45 +1,46 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DoctorCards extends StatelessWidget {
-  const DoctorCards({super.key, required this.text, this.imagePath});
+  const DoctorCards({super.key, required this.text, required this.imagePath});
 
   final String text;
-  final String? imagePath;
+  final String imagePath;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.only(top: 8, left: 0, right: 16),
+      margin: EdgeInsets.only(top: 8.h, left: 0.w, right: 16.w),
       color: Colors.white,
       child: Container(
-        padding: const EdgeInsets.all(6),
+        padding: EdgeInsets.all(6.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.all(20),
+            Padding(
+              padding: EdgeInsets.all(20.h),
               child: CircleAvatar(
-                backgroundColor: Colors.purple,
-                // backgroundImage: AssetImage(imagePath),
-                radius: 50,
+                // backgroundColor: Colors.purple,
+                backgroundImage: AssetImage(imagePath),
+                radius: 50.r,
               ),
             ),
             AutoSizeText(
               text,
-              style:
-                  GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w600),
+              style: GoogleFonts.inter(
+                  fontSize: 14.sp, fontWeight: FontWeight.w600),
             ),
             AutoSizeText(
               "Psychologist",
               style: GoogleFonts.inter(
-                  fontSize: 12,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.normal,
                   color: Colors.grey[700]),
             ),
-            const SizedBox(
-              height: 4,
+            SizedBox(
+              height: 4.h,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,13 +50,13 @@ class DoctorCards extends StatelessWidget {
                   color: Color(0xFFEE805F),
                   size: 22,
                 ),
-                const SizedBox(
-                  width: 2,
+                SizedBox(
+                  width: 2.w,
                 ),
                 AutoSizeText(
                   "4.7",
                   style: GoogleFonts.inter(
-                    fontSize: 8,
+                    fontSize: 8.sp,
                     fontWeight: FontWeight.normal,
                     color: const Color(0xFFEE805F),
                   ),

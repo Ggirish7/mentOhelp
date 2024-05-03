@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:ment_o_help/app/utils/globals.dart';
 import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
 import 'package:ment_o_help/app/view/question_screen/controller/question_screen_controller.dart';
 import 'package:ment_o_help/app/view/question_screen/widgets/question_widget.dart';
 import 'package:ment_o_help/core/app_colors.dart';
-import 'package:ment_o_help/core/app_routes.dart';
 
 class QuestionsScreen extends StatelessWidget {
   const QuestionsScreen({super.key});
@@ -24,26 +24,12 @@ class QuestionsScreen extends StatelessWidget {
           body: Column(
             children: [
               SizedBox(
-                height: 40.spMax,
+                height: 40.h,
               ),
               const QuestionWidget(),
               SizedBox(
-                height: 20.spMax,
+                height: 20.h,
               ),
-
-              // SizedBox(
-              //   width: MediaQuery.of(context).size.width * 0.75,
-              //   child: FilledActionButton(
-              //     labelText: "NEXT",
-              //     onPressed: () {
-              //       questionScreenController.buttonCarouselController
-              //           .nextPage();
-              //     },
-              //   ),
-              // ),
-
-              // FOR IMPLEMENTING NEXT AND PREVIOUS BUTTONS USING TERNARY OR IF-ELSE STATEMETS
-
               Obx(
                 () => Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -51,26 +37,25 @@ class QuestionsScreen extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: FilledActionButton(
-                        // onPressed: () {
-                        //   questionScreenController.buttonCarouselController
-                        //       .previousPage();
-                        // },
                         onPressed: () {
-                          Get.offAllNamed(RoutesNames.analyzingScreen);
+                          questionScreenController.buttonCarouselController
+                              .previousPage();
                         },
+                        // onPressed: () {
+                        //   Get.offNamed(RoutesNames.analyzingScreen);
+                        // },
                         labelText: "PREVIOUS",
                       ),
                     ),
                     SizedBox(
-                      width: 10.spMax,
+                      width: 10.w,
                     ),
                     questionScreenController.getQuestionIndex() == 8
                         ? SizedBox(
                             width: MediaQuery.of(context).size.width * 0.4,
                             child: FilledActionButton(
                               onPressed: () {
-                                print(questionScreenController.getScore());
-                                onTapSubmit(context);
+                                onTapSubmit();
                               },
                               labelText: "SUBMIT",
                             ),
@@ -96,19 +81,9 @@ class QuestionsScreen extends StatelessWidget {
     );
   }
 
-  void onTapSubmit(BuildContext context) {
+  void onTapSubmit() {
     questionScreenController.answerCheckCondition()
         ? questionScreenController.calculateScore()
-        : ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 1),
-              action: SnackBarAction(
-                  label: "Dismiss",
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                  }),
-              content: const Text("Please answer all questions"),
-            ),
-          );
+        : getSnackBar("Please answer all questions");
   }
 }

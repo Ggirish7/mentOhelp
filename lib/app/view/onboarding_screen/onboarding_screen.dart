@@ -24,33 +24,33 @@ class OnBoardingScreen extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.sp),
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 SizedBox(
-                  height: 95.sp,
+                  height: 95.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image(
                       image: const AssetImage(AppImage.mainLogo),
-                      width: 70.sp,
-                      height: 70.sp,
+                      width: 70.w,
+                      height: 70.h,
                     ),
                     Text("ment-o-help", style: AppFonts.onBoardingTitle)
                   ],
                 ),
                 const Spacer(),
                 SizedBox(
-                  height: 350.sp,
+                  height: 350.h,
                   width: double.maxFinite,
                   child: const CarouselWidget(),
                 ),
                 SizedBox(
-                  height: 50.sp,
+                  height: 50.h,
                 ),
                 HollowButton(
                   labelText: "GET STARTED",
@@ -59,7 +59,7 @@ class OnBoardingScreen extends StatelessWidget {
                   },
                 ),
                 SizedBox(
-                  height: 20.23.sp,
+                  height: 20.23.h,
                 ),
                 RichText(
                   textAlign: TextAlign.center,
@@ -84,7 +84,7 @@ class OnBoardingScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 50.sp,
+                  height: 50.h,
                 )
               ],
             ),

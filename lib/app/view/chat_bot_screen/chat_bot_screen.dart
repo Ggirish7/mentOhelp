@@ -1,96 +1,129 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:chat_bubbles/bubbles/bubble_special_three.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:ment_o_help/app/controllers/firebase_authentication_handler.dart';
 import 'package:ment_o_help/app/view/chat_bot_screen/controller/chat_screen_controller.dart';
 import 'package:ment_o_help/app/view/dashboard_screen/controller/dashboard_screen_controller.dart';
+import 'package:ment_o_help/core/app_colors.dart';
 import 'package:ment_o_help/core/app_fonts.dart';
 
-class ChatBotScreen extends StatelessWidget {
+class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({super.key});
 
+  @override
+  State<ChatBotScreen> createState() => _ChatBotScreenState();
+}
+
+class _ChatBotScreenState extends State<ChatBotScreen> {
   @override
   Widget build(BuildContext context) {
     final chatScreenController = Get.put(ChatScreenController());
     return Scaffold(
-      backgroundColor: const Color(0xFF262235),
       appBar: buildAppBar(),
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // Expanded(
-            //   child: StreamBuilder(
-            //     stream: chatScreenController.firestore
-            //         .collection('chats')
-            //         .orderBy('createdAt', descending: true)
-            //         .snapshots(),
-            //     builder: (context, snapshot) {
-            //       if (!snapshot.hasData) {
-            //         return const Center(
-            //           child: CircularProgressIndicator(),
-            //         );
-            //       }
-            //       final List<DocumentSnapshot> documents =
-            //           snapshot.data!.documents;
-            //       return ListView(
-            //         reverse: true,
-            //         padding: const EdgeInsets.symmetric(
-            //             vertical: 20.0, horizontal: 10.0),
-            //         children: documents.map((doc) {
-            //           return ChatMessage(
-            //             text: doc['text'],
-            //           );
-            //         }).toList(),
-            //       );
-            //     },
-            //   ),
-            // ),
-            Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      // controller: _controller,
-                      decoration: InputDecoration(
-                          hintText: 'Enter your message...',
-                          fillColor: Colors.red,
-                          filled: true,
-                          enabledBorder: UnderlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)))),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  CircleAvatar(
-                    radius: 24,
-                    backgroundColor: Colors.red,
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.send,
-                        color: Colors.white,
-                      ),
-                      // onPressed: () async {
-                      //   String message = _controller.text.trim();
-                      //   String response = await getResponse(message);
-                      //   sendMessage(message);
-                      //   sendMessage(response);
-                      // },
-                      onPressed: () async {
-                        await chatScreenController.getResponse("hello");
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: Col.appBackGround,
+          // image: const DecorationImage(
+          //     image: AssetImage("assets/images/chatbg.png"),
+          //     fit: BoxFit.fill,
+          //     colorFilter: ColorFilter.srgbToLinearGamma()),
+        ),
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: StreamBuilder(
+                  stream: chatScreenController.firestore
+                      .collection('users')
+                      .doc(FireManager.loggedInUser.uid)
+                      .collection('chats')
+                      .orderBy('createdAt', descending: true)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    final List<DocumentSnapshot> documents =
+                        snapshot.data!.docs;
+                    return ListView.builder(
+                      itemCount: documents.length,
+                      reverse: true,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20.0, horizontal: 10.0),
+                      itemBuilder: (context, index) {
+                        final Map<String, dynamic> data =
+                            documents[index].data() as Map<String, dynamic>;
+                        return MessageBubble(
+                            text: data['text'], isUser: data['isUser']);
                       },
-                    ),
-                  ),
-                ],
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: TextField(
+                        controller: chatScreenController.textController,
+                        onChanged: (value) {
+                          chatScreenController.message.value = value;
+                        },
+                        style: GoogleFonts.inter(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                        decoration: InputDecoration(
+                          hintText: 'Enter your message here...',
+                          hintStyle: GoogleFonts.inter(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey[400],
+                          ),
+                          fillColor: const Color(0xFF43034A),
+                          filled: true,
+                          border: UnderlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.r)),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    CircleAvatar(
+                      radius: 24,
+                      backgroundColor: const Color(0xFF43034A),
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.send,
+                          color: Colors.white,
+                        ),
+                        onPressed: () async {
+                          chatScreenController.sendMessage(
+                              chatScreenController.message.value, true);
+                          await chatScreenController
+                              .getResponse(chatScreenController.message.value);
+                          chatScreenController.textController.clear();
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -100,10 +133,10 @@ class ChatBotScreen extends StatelessWidget {
 PreferredSizeWidget buildAppBar() {
   final dashBoardController = Get.put(DashBoardController());
   return AppBar(
-    backgroundColor: const Color.fromARGB(255, 16, 15, 21),
+    backgroundColor: const Color(0xFF110122),
     elevation: 8,
     leading: IconButton(
-      icon: Icon(
+      icon: const Icon(
         Icons.arrow_back_sharp,
         color: Colors.white,
       ),
@@ -160,32 +193,28 @@ PreferredSizeWidget buildAppBar() {
   );
 }
 
-class ChatMessage extends StatelessWidget {
+class MessageBubble extends StatelessWidget {
+  const MessageBubble({
+    super.key,
+    required this.text,
+    required this.isUser,
+  });
   final String text;
-  final bool isMe = false;
-
-  const ChatMessage({super.key, required this.text});
-
+  final bool isUser;
   @override
   Widget build(BuildContext context) {
-    return Material(
-      // color: isMe ? Colors.lightBlueAccent : Colors.white,
-      elevation: 10,
-      borderRadius: BorderRadius.only(
-        bottomLeft: isMe ? const Radius.circular(0) : const Radius.circular(10),
-        bottomRight:
-            isMe ? const Radius.circular(10) : const Radius.circular(0),
-        topLeft: const Radius.circular(10),
-        topRight: const Radius.circular(10),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: 16.0,
+    return Padding(
+      padding: EdgeInsets.only(bottom: 10.h),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          BubbleSpecialThree(
+            text: text,
+            isSender: isUser,
+            color: isUser ? const Color(0xFFEA4080) : const Color(0xFFEE805F),
+            textStyle: const TextStyle(color: Colors.white),
           ),
-        ),
+        ],
       ),
     );
   }

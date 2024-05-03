@@ -21,7 +21,7 @@ class AnswerWidget extends StatelessWidget {
           },
         ),
         SizedBox(
-          height: 5.spMax,
+          height: 5.h,
         ),
         Options(
           labelText: "Several Days",
@@ -32,7 +32,7 @@ class AnswerWidget extends StatelessWidget {
           },
         ),
         SizedBox(
-          height: 5.spMax,
+          height: 5.h,
         ),
         Options(
           labelText: "More Than Half The Days",
@@ -43,7 +43,7 @@ class AnswerWidget extends StatelessWidget {
           },
         ),
         SizedBox(
-          height: 5.spMax,
+          height: 5.h,
         ),
         Options(
           labelText: "Nearly Everyday",
@@ -75,14 +75,14 @@ class Options extends StatelessWidget {
       () => OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          fixedSize: Size(250.spMax, 40.spMax),
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          fixedSize: Size(250.w, 40.h),
           side: const BorderSide(
             width: 1.34,
             color: Colors.black54,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(67.0),
+            borderRadius: BorderRadius.circular(67.r),
           ),
           backgroundColor: questionScreenController.getAnswerAtIndex(
                       questionScreenController.getQuestionIndex()) ==
@@ -92,7 +92,7 @@ class Options extends StatelessWidget {
         ),
         child: Text(
           labelText,
-          style: GoogleFonts.inter(fontSize: 16.spMax, color: Colors.black),
+          style: GoogleFonts.inter(fontSize: 16.sp, color: Colors.black),
         ),
       ),
     );

@@ -123,44 +123,12 @@ class AppFonts {
     color: Colors.white,
   );
 
-  // static const String nunito = 'nunito';
+  static TextStyle profileDisplayName = GoogleFonts.inter(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
 
-  // static TextStyle nunitoRegular({
-  //   double fontSize = 16,
-  //   Color color = const Color(0xFF000000),
-  //   FontWeight fontWeight = FontWeight.normal,
-  // }) {
-  //   return TextStyle(
-  //     fontFamily: nunito,
-  //     fontSize: fontSize,
-  //     color: color,
-  //     fontWeight: fontWeight,
-  //   );
-  // }
-
-  // static TextStyle nunitonodec({
-  //   double fontSize = 16,
-  //   Color color = const Color(0xFF000000),
-  //   FontWeight fontWeight = FontWeight.w800,
-  // }) {
-  //   return TextStyle(
-  //     fontFamily: nunito,
-  //     fontSize: fontSize,
-  //     color: color,
-  //     fontWeight: fontWeight,
-  //     decoration: TextDecoration.none,
-  //   );
-  // }
-
-  // static TextStyle nunitoBold(
-  //     {double fontSize = 16,
-  //     Color color = const Color(0xFF000000),
-  //     FontWeight fontWeight = FontWeight.bold}) {
-  //   return TextStyle(
-  //     fontFamily: nunito,
-  //     fontSize: fontSize,
-  //     color: color,
-  //     fontWeight: fontWeight,
-  //   );
-  // }
+  static TextStyle profileListTile =
+      GoogleFonts.inter(color: Colors.white, fontWeight: FontWeight.w600);
 }

@@ -37,13 +37,12 @@ class QuestionWidget extends StatelessWidget {
           return Builder(
             builder: (BuildContext context) {
               return Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: 20.spMax, vertical: 30.spMax),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
                 width: MediaQuery.of(context).size.width * 0.85,
                 decoration: BoxDecoration(
                     // color: Col.whit,
                     color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(25.spMax)),
+                    borderRadius: BorderRadius.circular(25.r)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -51,9 +50,6 @@ class QuestionWidget extends StatelessWidget {
                       "Over the last 2 weeks, how often have you been bothered by any of the following problems?",
                       style: AppFonts.pageTitles2,
                     ),
-                    // SizedBox(
-                    //   height: 20.spMax,
-                    // ),
                     Text(
                       Questions().questionText[i],
                       style: GoogleFonts.catamaran(

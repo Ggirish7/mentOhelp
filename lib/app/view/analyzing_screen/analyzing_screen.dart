@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
@@ -14,12 +16,14 @@ class AnalyzingScreen extends StatefulWidget {
 }
 
 class _AnalyzingScreenState extends State<AnalyzingScreen> {
-  var controller = Get.find<QuestionScreenController>();
+  // var controller = Get.find<QuestionScreenController>();
+  late QuestionScreenController controller;
   @override
   void initState() {
-    // Timer(const Duration(seconds: 2), () {
-    //   // controller.analyszeSituation();
-    // });
+    controller = Get.put(QuestionScreenController());
+    Timer(const Duration(seconds: 5), () {
+      controller.analyszeSituation();
+    });
     super.initState();
   }
 
@@ -37,28 +41,19 @@ class _AnalyzingScreenState extends State<AnalyzingScreen> {
               Animate(
                 effects: const [
                   FadeEffect(
-                    duration: Duration(seconds: 1),
+                    duration: Duration(seconds: 2),
                   ),
                   SlideEffect(
-                    duration: Duration(seconds: 1),
+                    duration: Duration(seconds: 2),
                   )
                 ],
                 child: LottieBuilder.asset(
-                    "assets/animations/analyzing_results_animation.json"),
-              ),
-              Animate(
-                effects: const [
-                  FadeEffect(
-                    duration: Duration(seconds: 1),
-                  ),
-                  SlideEffect(
-                    duration: Duration(seconds: 1),
-                  )
-                ],
-                child: Text(
-                  "ANALYZING YOUR CONDITION",
-                  style: AppFonts.pageTitles,
+                  "assets/animations/analyzing_results_animation.json",
                 ),
+              ),
+              Text(
+                "ANALYZING YOUR CONDITION",
+                style: AppFonts.pageTitles,
               ),
             ],
           ),

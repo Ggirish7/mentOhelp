@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:ment_o_help/app/utils/globals.dart';
 import 'package:ment_o_help/app/utils/widgets/filled_action_button.dart';
 import 'package:ment_o_help/app/view/core_issues_screen/controller/core_issues_screen_controller.dart';
 import 'package:ment_o_help/app/view/core_issues_screen/widgets/chatbot_card_widget.dart';
@@ -26,22 +27,22 @@ class CoreIssuesScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 78.sp,
+                  height: 78.h,
                 ),
                 Text("LETS PERSONALIZE THIS FOR YOU",
                     style: AppFonts.pageTitles),
                 SizedBox(
-                  height: 40.spMax,
+                  height: 40.h,
                 ),
                 Text(
                   "What are your core issues?",
                   style: AppFonts.coreIssuesMainText,
                 ),
                 SizedBox(
-                  height: 22.spMax,
+                  height: 22.h,
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12.spMax),
+                  padding: EdgeInsets.symmetric(horizontal: 12.w),
                   child: const IssuesWidget(),
                 ),
                 const Spacer(),
@@ -51,24 +52,23 @@ class CoreIssuesScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 22.spMax, vertical: 22),
+                      EdgeInsets.symmetric(horizontal: 22.w, vertical: 22.h),
                   child: const ChatBotCardWidget(),
                 ),
                 const Spacer(),
                 SizedBox(
-                  width: 312.spMax,
+                  width: 312.w,
                   child: FilledActionButton(
                     labelText: "NEXT STEP",
                     onPressed: () {
                       onTapNextStep(
-                        context,
                         coreIssuesScreenController.nextScreenCondition(),
                       );
                     },
                   ),
                 ),
                 SizedBox(
-                  height: 22.sp,
+                  height: 22.h,
                 ),
               ],
             ),
@@ -80,18 +80,8 @@ class CoreIssuesScreen extends StatelessWidget {
 }
 
 // Navigates to chatbot screen
-onTapNextStep(BuildContext context, bool value) {
+onTapNextStep(bool value) {
   value
       ? Get.toNamed(RoutesNames.whatBringsYouScreen)
-      : ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 1),
-            action: SnackBarAction(
-                label: "Dismiss",
-                onPressed: () {
-                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                }),
-            content: const Text("Select at least 1 option"),
-          ),
-        );
+      : getSnackBar("Select at least 1 option");
 }

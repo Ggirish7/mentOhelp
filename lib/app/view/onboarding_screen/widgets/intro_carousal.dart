@@ -15,7 +15,7 @@ class CarouselWidget extends StatelessWidget {
         initialPage: 0,
         enableInfiniteScroll: true,
         reverse: false,
-        autoPlay: false,
+        autoPlay: true,
         autoPlayInterval: const Duration(seconds: 3),
         autoPlayAnimationDuration: const Duration(milliseconds: 1500),
         autoPlayCurve: Curves.fastOutSlowIn,
@@ -35,15 +35,15 @@ class CarouselWidget extends StatelessWidget {
                     Image.asset(
                       "assets/images/carousal_images/carousal_image_$i.png",
                       width: double.maxFinite,
-                      height: 250.spMax,
+                      height: 250.h,
                     ),
                     SizedBox(
-                      height: 20.sp,
+                      height: 20.h,
                     ),
                     Text(OnBoarding().onboardingMainText[i - 1],
                         style: AppFonts.carousalMainTextStyle),
                     SizedBox(
-                      height: 6.sp,
+                      height: 6.h,
                     ),
                     Text(OnBoarding().onboardingSubText[i - 1],
                         style: AppFonts.carousalSubTextStyle),

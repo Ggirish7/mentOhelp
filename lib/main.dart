@@ -9,6 +9,7 @@ import 'package:ment_o_help/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await ScreenUtil.ensureScreenSize();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -26,13 +27,15 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return GetMaterialApp(
+          useInheritedMediaQuery: true,
           debugShowCheckedModeBanner: false,
           title: "ment-o-help",
           themeMode: ThemeMode.system,
           initialRoute: RoutesNames.onBoarding,
-          // initialRoute: RoutesNames.questionsScreen,
+          // initialRoute: RoutesNames.dashBoardScreen,
           getPages: Routes.routes,
           scaffoldMessengerKey: snackbarKey,
+          defaultTransition: Transition.downToUp,
         );
       },
     );

@@ -7,13 +7,16 @@ final GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-SnackBar getSnackBar(String text) {
-  return SnackBar(
-    content: Text(text),
-    duration: const Duration(seconds: 1),
-    action: SnackBarAction(
-      label: "Dismiss",
-      onPressed: () => snackbarKey.currentState!.hideCurrentSnackBar(),
+void getSnackBar(String text) {
+  snackbarKey.currentState!.showSnackBar(
+    SnackBar(
+      duration: const Duration(seconds: 1),
+      action: SnackBarAction(
+          label: "Dismiss",
+          onPressed: () {
+            snackbarKey.currentState!.hideCurrentSnackBar();
+          }),
+      content: Text(text),
     ),
   );
 }

@@ -12,8 +12,8 @@ class IssuesWidget extends StatelessWidget {
     var coreIssuesScreenController = Get.find<CoreIssuesScreenController>();
     return Wrap(
       alignment: WrapAlignment.center,
-      runSpacing: 8.spMax,
-      spacing: 8.spMax,
+      runSpacing: 8.h,
+      spacing: 8.h,
       children: [
         Obx(
           () => coreIssues(
@@ -87,6 +87,15 @@ class IssuesWidget extends StatelessWidget {
             value: coreIssuesScreenController.worklifeStress.value,
           ),
         ),
+        Obx(
+          () => coreIssues(
+            text: "Other",
+            onPressed: () {
+              coreIssuesScreenController.updateOther();
+            },
+            value: coreIssuesScreenController.other.value,
+          ),
+        ),
       ],
     );
   }
@@ -101,9 +110,9 @@ Widget coreIssues({
     onPressed: onPressed,
     style: OutlinedButton.styleFrom(
       backgroundColor: value ? Colors.green[500] : const Color(0xffD9D9D9),
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10.w),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
       ),
     ),
     child: Text(
